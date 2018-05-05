@@ -104,8 +104,7 @@ class TripCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(slLabel.snp.leading)
         }
         iconImg.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-8)
-            make.top.equalTo(edLabel.snp.bottom).offset(8)
+            make.trailing.bottom.equalToSuperview().offset(-8)
         }
         
         super.updateConstraints()

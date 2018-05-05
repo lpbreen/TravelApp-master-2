@@ -37,7 +37,6 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
    var warningLabel: UILabel!
    var pickStartDateButton: UIButton!
    var pickEndDateButton: UIButton!
-   var pickHotelButton: UIButton!
    var startDate: Date!
    var endDate: Date!
    
@@ -46,7 +45,7 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
    var proportionStackView: UIStackView!
    var tripType: UISegmentedControl!
    var tripTypeLabel: UILabel!
-   var useType: TripType = .car
+   var useType: TripType = .plane
    
    
    override func viewDidLoad() {
@@ -91,14 +90,6 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
       pickEndDateButton.layer.cornerRadius = 12
       view.addSubview(pickEndDateButton)
       
-      pickHotelButton = UIButton()
-      pickHotelButton.setTitle("Pick Hotel", for: .normal)
-      pickHotelButton.setTitleColor(backgroundOrange, for: .normal)
-      pickHotelButton.addTarget(self, action: #selector(pickHotelButtonPressed), for: .touchUpInside)
-      pickHotelButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
-      pickHotelButton.backgroundColor = orange2
-      pickHotelButton.layer.cornerRadius = 12
-      view.addSubview(pickHotelButton)
       
       
       startDate = Date.init()
@@ -259,11 +250,6 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
          make.top.equalTo(pickStartDateButton.snp.bottom).offset(8)
          make.width.equalTo(0).offset(pickEndDateButton.intrinsicContentSize.width + 8)
       }
-      pickHotelButton.snp.makeConstraints { make in
-         make.leading.equalToSuperview()
-         make.top.equalTo(elTextField.snp.bottom).offset(8)
-         make.width.equalTo(0).offset(pickHotelButton.intrinsicContentSize.width + 8)
-      }
    }
    
    @objc func saveButtonPressed(sender: UIButton) {
@@ -288,6 +274,7 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
    }
    
    @objc func tripTypeChanged() {
+      
       if tripType.selectedSegmentIndex == 0 {
          self.useType = .car
       } else {

@@ -24,6 +24,7 @@ class UpdatedCalendarViewController: UIViewController, CVCalendarViewDelegate, C
         return .sunday
     }
     
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     var menuView: CVCalendarMenuView!
     var calendarView: CVCalendarView!
@@ -31,6 +32,8 @@ class UpdatedCalendarViewController: UIViewController, CVCalendarViewDelegate, C
     var delegate: DateDelegate!
     var currentDate: Date! = Date.init()
     var pickingStartDate: Bool!
+    var monthLabel: UILabel!
+    var currentMonth: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +41,10 @@ class UpdatedCalendarViewController: UIViewController, CVCalendarViewDelegate, C
         view.backgroundColor = .white
         
         // CVCalendarMenuView initialization with frame
-        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 100, width: view.frame.size.width, height: 15))
+        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 150, width: view.frame.size.width, height: 15))
         
         // CVCalendarView initialization with frame
-        self.calendarView = CVCalendarView(frame: CGRect(x: 0,y: 120, width: view.frame.size.width, height: 450))
+        self.calendarView = CVCalendarView(frame: CGRect(x: 0,y: 170, width: view.frame.size.width, height: 450))
         
         // Appearance delegate [Unnecessary]
         self.calendarView.calendarAppearanceDelegate = self
@@ -61,9 +64,15 @@ class UpdatedCalendarViewController: UIViewController, CVCalendarViewDelegate, C
         selectButton.setTitleColor(.red, for: .normal)
         selectButton.titleLabel?.font = UIFont.systemFont(ofSize: 48)
         
+        currentMonth = Int(self.calendarView.presentedDate.month) - 1
+        monthLabel = UILabel()
+        monthLabel.text = months[currentMonth]
+        monthLabel.font = UIFont.systemFont(ofSize: 48)
+        
         view.addSubview(menuView)
         view.addSubview(calendarView)
         view.addSubview(selectButton)
+        view.addSubview(monthLabel)
         setupConstraints()
     }
     
@@ -71,6 +80,11 @@ class UpdatedCalendarViewController: UIViewController, CVCalendarViewDelegate, C
         selectButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-48)
+        }
+        
+        monthLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
         }
     }
     
@@ -89,5 +103,8 @@ class UpdatedCalendarViewController: UIViewController, CVCalendarViewDelegate, C
     
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool) {
         currentDate = dayView.date.convertedDate()
+        currentMonth = Int(dayView.date.month) - 1
+        //print(currentMonth)
+        monthLabel?.text = months[currentMonth]
     }
 }

@@ -36,6 +36,8 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         
+        title = trip.startLocation + " -> " + trip.endLocation
+        
         editButton = UIButton()
         editButton.setTitle("Edit Trip", for: .normal)
         editButton.setTitleColor(niceColor, for: .normal)

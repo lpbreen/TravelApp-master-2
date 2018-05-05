@@ -60,3 +60,4 @@ extension ResultProtocol where Value: AsyncType, Value.Value: ResultProtocol, Er
         }
     }
 }
+
