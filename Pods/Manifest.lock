@@ -1,0 +1,53 @@
+PODS:
+  - Alamofire (4.7.0)
+  - AlamofireObjectMapper (5.0.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.0)
+  - BrightFutures (6.0.0):
+    - Result (~> 3.2.4)
+  - CDYelpFusionKit (1.5.0):
+    - AlamofireObjectMapper (= 5.0.0)
+  - CVCalendar (1.6.1)
+  - ObjectMapper (3.1.0)
+  - Result (3.2.4)
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.0.0)
+  - YelpAPI (3.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - BrightFutures
+  - CDYelpFusionKit
+  - CVCalendar (~> 1.6.1)
+  - SnapKit
+  - SwiftyJSON
+  - YelpAPI
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - BrightFutures
+    - CDYelpFusionKit
+    - CVCalendar
+    - ObjectMapper
+    - Result
+    - SnapKit
+    - SwiftyJSON
+    - YelpAPI
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  BrightFutures: 9e7604f511aed9f0d6a49b04ac9b3fca6b117758
+  CDYelpFusionKit: 665cf3881bff25db3a47ca3a4e3497e3a1ea552a
+  CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  YelpAPI: 9ae0ee45b998d306c1aff9b2d966dc23121f191e
+
+PODFILE CHECKSUM: 9c4d7000b09b62ef4b693653a3b16d85c92bd5d7
+
+COCOAPODS: 1.5.0
