@@ -46,7 +46,7 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
    var proportionStackView: UIStackView!
    var tripType: UISegmentedControl!
    var tripTypeLabel: UILabel!
-   var useType: TripType = .car
+   var useType: TripType = .plane
    
    
    override func viewDidLoad() {
@@ -288,6 +288,7 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
    }
    
    @objc func tripTypeChanged() {
+      
       if tripType.selectedSegmentIndex == 0 {
          self.useType = .car
       } else {

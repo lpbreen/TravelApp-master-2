@@ -104,7 +104,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(((collectionView.frame.size.width / 2) - 10)*2), height: CGFloat(164))
+        return CGSize(width: CGFloat(((collectionView.frame.size.width / 2) - 10)*2), height: CGFloat(130))
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
