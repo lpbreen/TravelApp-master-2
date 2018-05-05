@@ -41,22 +41,22 @@ extension ResultProtocol where Value: ResultProtocol, Error == Value.Error {
     }
 }
 
-extension ResultProtocol where Value: AsyncType, Value.Value: ResultProtocol, Error == Value.Value.Error {
-    /// Returns the inner future if the outer result succeeded or a failed future
-    /// with the error from the outer result otherwise
-    public func flatten() -> Future<Value.Value.Value, Value.Value.Error> {
-        return Future { complete in
-            analysis(ifSuccess: { innerFuture in
-                innerFuture.onComplete(ImmediateExecutionContext) { res in
-                    complete(res.analysis(ifSuccess: {
-                        return Result(value: $0)
-                    }, ifFailure: {
-                        return Result(error: $0)
-                    }))
-                }
-            }, ifFailure: {
-                complete(Result(error: $0))
-            })
-        }
-    }
-}
+//extension ResultProtocol where Value: AsyncType, Value.Value: ResultProtocol, Error == Value.Value.Error {
+//    /// Returns the inner future if the outer result succeeded or a failed future
+//    /// with the error from the outer result otherwise
+//    public func flatten() -> Future<Value.Value.Value, Value.Value.Error> {
+//        return Future { complete in
+//            analysis(ifSuccess: { innerFuture in
+//                innerFuture.onComplete(ImmediateExecutionContext) { res in
+//                    complete(res.analysis(ifSuccess: {
+//                        return Result(value: $0)
+//                    }, ifFailure: {
+//                        return Result(error: $0)
+//                    }))
+//                }
+//            }, ifFailure: {
+//                complete(Result(error: $0))
+//            })
+//        }
+//    }
+//}

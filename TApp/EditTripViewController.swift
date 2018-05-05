@@ -20,8 +20,10 @@ class EditTripViewController: UIViewController, DateDelegate {
     func setDate(date: Date, pickingSd: Bool) {
         if pickingSd {
             trip.startDate = date
+            currentSDLabel.text = "Current: " + dateDescriptionModifier(description: String(describing: trip.startDate))
         } else {
             trip.endDate = date
+            currentEDLabel.text = "Current: " + dateDescriptionModifier(description: String(describing: trip.endDate))
         }
     }
     
@@ -29,6 +31,8 @@ class EditTripViewController: UIViewController, DateDelegate {
     var tripNumber: Int!
     var editStartDateButton: UIButton!
     var editEndDateButton: UIButton!
+    var currentSDLabel: UILabel!
+    var currentEDLabel: UILabel!
     var doneButton: UIButton!
     var updateTripDelegate: UpdateTripDelegate!
     
@@ -36,11 +40,11 @@ class EditTripViewController: UIViewController, DateDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = UIColor(red: 255/255, green: 238/255, blue: 112/255, alpha: 1)
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         
         editStartDateButton = UIButton()
         editStartDateButton.setTitle("Edit Start Date", for: .normal)
-        editStartDateButton.setTitleColor(niceColor, for: .normal)
+        editStartDateButton.setTitleColor(backgroundOrange, for: .normal)
         editStartDateButton.titleLabel?.font = UIFont.systemFont(ofSize: 60)
         editStartDateButton.layer.cornerRadius = 6
         editStartDateButton.addTarget(self, action: #selector(editStartDateButtonPressed), for: .touchUpInside)
@@ -48,7 +52,7 @@ class EditTripViewController: UIViewController, DateDelegate {
         
         editEndDateButton = UIButton()
         editEndDateButton.setTitle("Edit End Date", for: .normal)
-        editEndDateButton.setTitleColor(niceColor, for: .normal)
+        editEndDateButton.setTitleColor(backgroundOrange, for: .normal)
         editEndDateButton.titleLabel?.font = UIFont.systemFont(ofSize: 60)
         editEndDateButton.layer.cornerRadius = 6
         editEndDateButton.addTarget(self, action: #selector(editEndDateButtonPressed), for: .touchUpInside)
@@ -56,10 +60,22 @@ class EditTripViewController: UIViewController, DateDelegate {
         
         doneButton = UIButton()
         doneButton.setTitle("Done", for: .normal)
-        doneButton.setTitleColor(niceColor, for: .normal)
+        doneButton.setTitleColor(backgroundOrange, for: .normal)
         doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
         view.addSubview(doneButton)
+        
+        currentSDLabel = UILabel()
+        currentSDLabel.text = "Current: " + dateDescriptionModifier(description: String(describing: trip.startDate))
+        currentSDLabel.textColor = backgroundOrange
+        currentSDLabel.font = UIFont.systemFont(ofSize: 28)
+        view.addSubview(currentSDLabel)
+        
+        currentEDLabel = UILabel()
+        currentEDLabel.text = "Current: " + dateDescriptionModifier(description: String(describing: trip.endDate))
+        currentEDLabel.textColor = backgroundOrange
+        currentEDLabel.font = UIFont.systemFont(ofSize: 28)
+        view.addSubview(currentEDLabel)
         
         setupConstraints()
     }
@@ -86,18 +102,42 @@ class EditTripViewController: UIViewController, DateDelegate {
     func setupConstraints() {
         editStartDateButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-40)
+            make.top.equalToSuperview().offset(40)
+        }
+        
+        currentSDLabel.snp.makeConstraints { make in
+            make.leading.equalTo(editStartDateButton.snp.leading)
+            make.top.equalTo(editStartDateButton.snp.bottom).offset(8)
         }
         
         editEndDateButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(40)
+            make.top.equalTo(currentSDLabel.snp.bottom).offset(24)
+        }
+        
+        currentEDLabel.snp.makeConstraints { make in
+            make.leading.equalTo(editEndDateButton.snp.leading)
+            make.top.equalTo(editEndDateButton.snp.bottom).offset(8)
         }
         
         doneButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-100)
         }
+    }
+    
+    func dateDescriptionModifier(description: String) -> String {
+        print(description)
+        let year: String = description.substring(to: description.index(of: "-")!)
+        print(year)
+        let monthIndex = description.index(description.startIndex, offsetBy: 5)
+        let endIndex = description.index(description.startIndex, offsetBy: 2)
+        let month: String = description.substring(from: monthIndex).substring(to: endIndex)
+        print(month)
+        let dayIndex = description.index(description.startIndex, offsetBy: 8)
+        let day: String = description.substring(from: dayIndex).substring(to: endIndex)
+        print(day)
+        return "\(month)/\(day)/\(year)"
     }
     
 }
