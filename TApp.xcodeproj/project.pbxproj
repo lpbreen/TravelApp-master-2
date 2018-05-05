@@ -12,6 +12,7 @@
 		6D58869C209E0F1C006BDDEE /* yelpSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58869B209E0F1C006BDDEE /* yelpSetup.swift */; };
 		6D58869E209E1910006BDDEE /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58869D209E1910006BDDEE /* ItineraryViewController.swift */; };
 		6D5886A0209E2E38006BDDEE /* MakeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58869F209E2E38006BDDEE /* MakeScheduleViewController.swift */; };
+		6D5886A2209E4B85006BDDEE /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5886A1209E4B85006BDDEE /* Attraction.swift */; };
 		6DD319E920918D8900ACBD44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD319E820918D8900ACBD44 /* AppDelegate.swift */; };
 		6DD319EB20918D8900ACBD44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD319EA20918D8900ACBD44 /* ViewController.swift */; };
 		6DD319EE20918D8900ACBD44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DD319EC20918D8900ACBD44 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		6D58869B209E0F1C006BDDEE /* yelpSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpSetup.swift; sourceTree = "<group>"; };
 		6D58869D209E1910006BDDEE /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		6D58869F209E2E38006BDDEE /* MakeScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeScheduleViewController.swift; sourceTree = "<group>"; };
+		6D5886A1209E4B85006BDDEE /* Attraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		6DD319E520918D8900ACBD44 /* TApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DD319E820918D8900ACBD44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DD319EA20918D8900ACBD44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				B668DA98209D6972000557DE /* TripDetailsViewController.swift */,
 				6D58869D209E1910006BDDEE /* ItineraryViewController.swift */,
 				6D58869F209E2E38006BDDEE /* MakeScheduleViewController.swift */,
+				6D5886A1209E4B85006BDDEE /* Attraction.swift */,
 				6DD31A152095792200ACBD44 /* StorageManager.swift */,
 				6DD31A0B2095765F00ACBD44 /* CalendarViewController.swift */,
 				6D5886932097D47D006BDDEE /* UpdatedCalendarViewController.swift */,
@@ -288,6 +291,7 @@
 				6DD319F120918D8900ACBD44 /* TApp.xcdatamodeld in Sources */,
 				B668DA99209D6972000557DE /* TripDetailsViewController.swift in Sources */,
 				6DD319EB20918D8900ACBD44 /* ViewController.swift in Sources */,
+				6D5886A2209E4B85006BDDEE /* Attraction.swift in Sources */,
 				6D58869C209E0F1C006BDDEE /* yelpSetup.swift in Sources */,
 				6DD31A082095657900ACBD44 /* NTViewController.swift in Sources */,
 				6DD31A022092641D00ACBD44 /* TripCollectionViewCell.swift in Sources */,

@@ -46,6 +46,18 @@ class ItineraryViewController: UIViewController, UpdateTripDelegate {
     func doStuff () {
         view.backgroundColor = .white
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "+",
+            style: .done,
+            target: self,
+            action: #selector(rightButtonPressed)
+        )
+        
+        let font = UIFont.systemFont(ofSize: 30)
+        navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): font], for: .normal)
+        
+        navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): font], for: .selected)
+        
         title = self.trip.endLocation
         
         let mapView = MKMapView()
@@ -70,6 +82,14 @@ class ItineraryViewController: UIViewController, UpdateTripDelegate {
         mapView.setRegion(region, animated: true)
         
         view.addSubview(mapView)
+    }
+    
+    @objc func rightButtonPressed(sender: UIButton) {
+        let makeVC = MakeScheduleViewController()
+        self.updateTripDelegate = makeVC
+        updateTripDelegate.updateTrip(trip: trip, number: tripNumber)
+        
+        present(makeVC, animated: true, completion: nil)
     }
     
 }
