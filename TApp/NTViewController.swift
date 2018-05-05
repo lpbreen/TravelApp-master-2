@@ -51,7 +51,7 @@ class NTViewController: UIViewController, TripsLengthDelegate, DateDelegate {
    override func viewDidLoad() {
       super.viewDidLoad()
       // Do any additional setup after loading the view, typically from a nib.
-      view.backgroundColor = UIColor(red: 200/255, green: 240/255, blue: 255/255, alpha: 1)
+      view.backgroundColor = .white
       title = "New Trip"
       
       //      let image = UIImage(named: "map.jpeg")!

@@ -35,7 +35,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        view.backgroundColor = .white
         
         title = trip.startLocation + " -> " + trip.endLocation
         
@@ -76,7 +76,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.bounces = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tableCell")
-        tableView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        tableView.backgroundColor = .white
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         
@@ -94,6 +94,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         editButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.trailing.equalToSuperview().offset(-16)
+            make.width.equalTo(0).offset(editButton.intrinsicContentSize.width)
         }
         
         doneButton.snp.makeConstraints { make in
@@ -103,8 +104,9 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         restSuggestionsButton.snp.makeConstraints { make in
             make.top.equalTo(editButton.snp.top).offset(8)
-            make.leading.equalTo(doneButton.snp.trailing).offset(8)
-            make.trailing.equalTo(editButton.snp.leading).offset(-8)
+            make.centerX.equalToSuperview()
+            make.leading.equalTo(doneButton.snp.trailing).offset(2)
+            make.trailing.equalTo(editButton.snp.leading).offset(-2)
         }
         
         NSLayoutConstraint.activate([
@@ -150,7 +152,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         cell?.textLabel?.textColor = backgroundOrange
         cell?.textLabel?.textAlignment = .center
         cell?.textLabel?.font = UIFont.systemFont(ofSize: 54)
-        cell?.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        cell?.backgroundColor = .white
         cell!.setNeedsUpdateConstraints()
         return cell!
     }

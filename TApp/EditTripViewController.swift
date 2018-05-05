@@ -40,7 +40,7 @@ class EditTripViewController: UIViewController, DateDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        view.backgroundColor = .white
         
         editStartDateButton = UIButton()
         editStartDateButton.setTitle("Edit Start Date", for: .normal)
