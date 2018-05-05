@@ -7,19 +7,31 @@
 //
 
 import UIKit
+import SnapKit
 import MapKit
 import CoreLocation
 
-class ItineraryViewController: UIViewController, UpdateTripDelegate {
+protocol RestaurantDelegate {
+    func addToRestaurants(restaurant: String)
+}
+
+class ItineraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateTripDelegate, RestaurantDelegate {
+    
     func updateTrip(trip: Trip, number: Int) {
         self.trip = trip
         self.tripNumber = number
+    }
+    
+    func addToRestaurants(restaurant: String) {
+        restaurants.append(restaurant)
     }
     
     var trip: Trip!
     var tripNumber: Int!
     var updateTripDelegate: UpdateTripDelegate!
     var centerPlace: CLLocation!
+    var tableView: UITableView!
+    var restaurants: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +52,55 @@ class ItineraryViewController: UIViewController, UpdateTripDelegate {
             self.doStuff()
         }
         
+        restaurants = []
         
+        tableView = UITableView()
+        tableView.bounces = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tableCell")
+        tableView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.allowsSelection = false
+        
+        view.addSubview(tableView)
+        setupCosntraints()
     }
  
+    func setupCosntraints() {
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.centerY)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    //////////////////
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "My Restaurants"
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return restaurants.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell")
+        
+        cell!.textLabel!.text = restaurants[indexPath.row]
+        cell?.textLabel?.textColor = backgroundOrange
+        //cell?.textLabel?.textAlignment = .center
+        cell?.textLabel?.font = UIFont.systemFont(ofSize: 24)
+        cell?.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        cell!.setNeedsUpdateConstraints()
+        return cell!
+    }
+    
+    
+    //////////////////
+    
     func doStuff () {
         view.backgroundColor = .white
         
@@ -88,8 +146,9 @@ class ItineraryViewController: UIViewController, UpdateTripDelegate {
         let makeVC = MakeScheduleViewController()
         self.updateTripDelegate = makeVC
         updateTripDelegate.updateTrip(trip: trip, number: tripNumber)
-        
-        present(makeVC, animated: true, completion: nil)
+        makeVC.restaurantDelegate = self
+        navigationController?.pushViewController(makeVC, animated: true)
+        //present(makeVC, animated: true, completion: nil)
     }
     
 }

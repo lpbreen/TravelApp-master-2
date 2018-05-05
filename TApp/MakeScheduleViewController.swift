@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 import MapKit
 import CoreLocation
 
@@ -21,14 +22,16 @@ class MakeScheduleViewController: UIViewController, UITableViewDelegate, UITable
     var updateTripDelegate: UpdateTripDelegate!
     var centerPlace: CLLocation!
     var tableView: UITableView!
+    var cancelButton: UIButton!
     var attractions: [Attraction]! = []
+    var restaurantDelegate: RestaurantDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pullAttractions()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             self.tableView.reloadData()
         }
         
@@ -48,7 +51,20 @@ class MakeScheduleViewController: UIViewController, UITableViewDelegate, UITable
             self.doStuff()
         }
         
+        cancelButton = UIButton()
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitleColor(backgroundOrange, for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        view.addSubview(cancelButton)
         
+        cancelButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(12)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+        }
+    }
+    
+    @objc func cancelButtonPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     func doStuff () {
@@ -59,7 +75,7 @@ class MakeScheduleViewController: UIViewController, UITableViewDelegate, UITable
         let mapView = MKMapView()
         
         let leftMargin:CGFloat = 0
-        let topMargin:CGFloat = 0
+        let topMargin:CGFloat = 100
         let mapWidth:CGFloat = view.frame.size.width
         let mapHeight:CGFloat = view.frame.size.height/2
         
@@ -120,24 +136,22 @@ class MakeScheduleViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "tableCell")
         
-//        let itVC = ItineraryViewController()
-//        self.updateTripDelegate = itVC
-//        updateTripDelegate.updateTrip(trip: trip, number: tripNumber)
-//
-//        navigationController?.pushViewController(itVC, animated: true)
+        restaurantDelegate.addToRestaurants(restaurant: (cell.textLabel?.text)!)
+        navigationController?.popViewController(animated: true)
+        //dismiss(animated: true, completion: nil)
     }
     
     func pullAttractions () {
-        CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: "Hotel",
+        CDYelpFusionKitManager.shared.apiClient.searchBusinesses(byTerm: "Food",
                                                                  location: self.trip.endLocation,
                                                                  latitude: nil,
                                                                  longitude: nil,
                                                                  radius: 15000,
                                                                  categories: nil,
                                                                  locale: .english_unitedStates,
-                                                                 limit: 10,
+                                                                 limit: 20,
                                                                  offset: 0,
                                                                  sortBy: .rating,
                                                                  priceTiers: nil,

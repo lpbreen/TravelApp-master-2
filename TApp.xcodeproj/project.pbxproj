@@ -33,6 +33,7 @@
 		6DD31A1A2097C4CD00ACBD44 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD31A192097C4CD00ACBD44 /* car.png */; };
 		6DD31A1C2097C4D300ACBD44 /* plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD31A1B2097C4D200ACBD44 /* plane.png */; };
 		B668DA99209D6972000557DE /* TripDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B668DA98209D6972000557DE /* TripDetailsViewController.swift */; };
+		B66F471A209E5A940050A4A2 /* ItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66F4719209E5A940050A4A2 /* ItineraryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		6DD31A1B2097C4D200ACBD44 /* plane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane.png; sourceTree = "<group>"; };
 		958DA2A3B43C0D0A266A848B /* Pods-TApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TApp/Pods-TApp.release.xcconfig"; sourceTree = "<group>"; };
 		B668DA98209D6972000557DE /* TripDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsViewController.swift; sourceTree = "<group>"; };
+		B66F4719209E5A940050A4A2 /* ItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewCell.swift; sourceTree = "<group>"; };
 		D8C788399FFA67FC730A3D17 /* Pods_TApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F150A6BDF36D016A3838CF0D /* Pods-TApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TApp/Pods-TApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 				6D58869B209E0F1C006BDDEE /* yelpSetup.swift */,
 				B668DA98209D6972000557DE /* TripDetailsViewController.swift */,
 				6D58869D209E1910006BDDEE /* ItineraryViewController.swift */,
+				B66F4719209E5A940050A4A2 /* ItineraryTableViewCell.swift */,
 				6D58869F209E2E38006BDDEE /* MakeScheduleViewController.swift */,
 				6D5886A1209E4B85006BDDEE /* Attraction.swift */,
 				6DD31A152095792200ACBD44 /* StorageManager.swift */,
@@ -291,6 +294,7 @@
 				6DD319F120918D8900ACBD44 /* TApp.xcdatamodeld in Sources */,
 				B668DA99209D6972000557DE /* TripDetailsViewController.swift in Sources */,
 				6DD319EB20918D8900ACBD44 /* ViewController.swift in Sources */,
+				B66F471A209E5A940050A4A2 /* ItineraryTableViewCell.swift in Sources */,
 				6D5886A2209E4B85006BDDEE /* Attraction.swift in Sources */,
 				6D58869C209E0F1C006BDDEE /* yelpSetup.swift in Sources */,
 				6DD31A082095657900ACBD44 /* NTViewController.swift in Sources */,

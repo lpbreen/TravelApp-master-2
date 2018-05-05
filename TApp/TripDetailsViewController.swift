@@ -26,6 +26,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     var tripNumber: Int!
     var editButton: UIButton!
     var doneButton: UIButton!
+    var restSuggestionsButton: UIButton!
     
     var tableView: UITableView!
     
@@ -50,8 +51,17 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
         
+        restSuggestionsButton = UIButton()
+        restSuggestionsButton.setTitle("Restaurant Suggestions", for: .normal)
+        restSuggestionsButton.setTitleColor(niceColor, for: .normal)
+        restSuggestionsButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        restSuggestionsButton.titleLabel?.numberOfLines = 0
+        restSuggestionsButton.titleLabel?.textAlignment = .center
+        restSuggestionsButton.addTarget(self, action: #selector(restSuggestionsButtonPressed), for: .touchUpInside)
+        
         view.addSubview(editButton)
         view.addSubview(doneButton)
+        view.addSubview(restSuggestionsButton)
         
         var interval = self.trip.endDate.timeIntervalSince(self.trip.startDate)
         var numdays = 0
@@ -68,6 +78,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tableCell")
         tableView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         tableView.tableFooterView = UIView()
+        tableView.allowsSelection = false
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -90,11 +101,25 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             make.leading.equalToSuperview().offset(16)
         }
         
+        restSuggestionsButton.snp.makeConstraints { make in
+            make.top.equalTo(editButton.snp.top).offset(8)
+            make.leading.equalTo(doneButton.snp.trailing).offset(8)
+            make.trailing.equalTo(editButton.snp.leading).offset(-8)
+        }
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 24),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+    }
+    
+    @objc func restSuggestionsButtonPressed() {
+        let makeVC = MakeScheduleViewController()
+        self.updateTripDelegate = makeVC
+        updateTripDelegate.updateTrip(trip: trip, number: tripNumber)
+        
+        navigationController?.pushViewController(makeVC, animated: true)
     }
     
     @objc func editButtonPressed() {
@@ -130,15 +155,6 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let itVC = ItineraryViewController()
-        self.updateTripDelegate = itVC
-        updateTripDelegate.updateTrip(trip: trip, number: tripNumber)
-        
-        navigationController?.pushViewController(itVC, animated: true)
-    }
     
     func yelpSearch () {
         
