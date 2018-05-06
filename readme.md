@@ -6,15 +6,16 @@ Repo Link: https://github.com/jamesylgan/hack_challenge_backend
 
 Screenshots:
 
+![photos](https://user-images.githubusercontent.com/8934469/39669824-10fa992e-50c5-11e8-8508-f130a66e1156.png)
 
-Short Description: Our app allows you to plan as many trips as you’d like. A trip includes a start location, an end location, a start date, an end date, a hotel, and a trip type (plane vs car). Once you’ve created a trip, you can edit your start and end dates, see a timeline of which days you’re away, and see a map of your destination city. Additionally, the app can recommend restaurants in your destination city. 
+Short Description: Our app allows you to plan as many trips as youâ€™d like. A trip includes a start location, an end location, a start date, an end date, a hotel, and a trip type (plane vs car). Once youâ€™ve created a trip, you can edit your start and end dates, see a timeline of which days youâ€™re away, and see a map of your destination city. Additionally, the app can recommend restaurants in your destination city.Â 
 
 How app addresses requirements:
 iOS
 Autolayout: Uses SnapKit for layouts
 CollectionView or TableView: Home page is a CollectionView, many TableViews used throughout
 Navigation: Lots of ViewControllers connected with NavigationController
-API: API’s used for map and restaurant suggestion functionanility
+API: APIâ€™s used for map and restaurant suggestion functionanility
 
 Backend
 We used postgres because of MySQL on Windows not working.
