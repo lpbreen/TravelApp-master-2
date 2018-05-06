@@ -1,23 +1,26 @@
-App Name: Trip Planner
+# App Name: Trip Planner
 
-Tagline: From weekend getaways to business trips to family vacations, this is the one app you need to stay organized with whatever trip you take.
+# Tagline:
+From weekend getaways to business trips to family vacations, this is the one app you need to stay organized with whatever trip you take.
 
-Repo Link: https://github.com/jamesylgan/hack_challenge_backend
+# Backend Repo Link:
+https://github.com/jamesylgan/hack_challenge_backend
 
-Screenshots:
+# Screenshots:
 
 ![photos](https://user-images.githubusercontent.com/8934469/39669824-10fa992e-50c5-11e8-8508-f130a66e1156.png)
 
-Short Description: Our app allows you to plan as many trips as you’d like. A trip includes a start location, an end location, a start date, an end date, a hotel, and a trip type (plane vs car). Once you’ve created a trip, you can edit your start and end dates, see a timeline of which days you’re away, and see a map of your destination city. Additionally, the app can recommend restaurants in your destination city. 
+# Short Description:
+Our app allows you to plan as many trips as you’d like. A trip includes a start location, an end location, a start date, an end date, a hotel, and a trip type (plane vs car). Once you’ve created a trip, you can edit your start and end dates, see a timeline of which days you’re away, and see a map of your destination city. Additionally, the app can recommend restaurants in your destination city. 
 
-How app addresses requirements:
-iOS
+# How app addresses requirements:
+## iOS
 Autolayout: Uses SnapKit for layouts
 CollectionView or TableView: Home page is a CollectionView, many TableViews used throughout
 Navigation: Lots of ViewControllers connected with NavigationController
 API: API’s used for map and restaurant suggestion functionanility
 
-Backend
+## Backend
 We used postgres because of MySQL on Windows not working.
 
 We really struggled to deploy on time because of Windows issues. Because of that, we were unable to properly test (although we believe that our code is correct but slightly unfinished) and could not deploy in time (DEPLOY ON GOOGLE CLOUD)
